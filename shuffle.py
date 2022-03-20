@@ -5,7 +5,7 @@ from adafruit_crickit import crickit
 
 print("1 Servo demo with custom pulse widths!")
 
-crickit.servo_1.set_pulse_width_range(min_pulse=500, max_pulse=2500)
+crickit.servo_1.set_pulse_width_range(min_pulse=500, max_pulse=2300)
 
 while True:
 	print("Moving servo #1")
