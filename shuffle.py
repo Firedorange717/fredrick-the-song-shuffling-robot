@@ -2,19 +2,16 @@
 #
 # SPDX-License-Identifier: MIT
 
-# Drive NeoPixels on the NeoPixels Block on Crickit for
-#  Circuit Playground Express
+# Drive NeoPixels on the NeoPixels Block on Crickit FeatherWing
 import time
 from rainbowio import colorwheel
-import neopixel
-import board
+from adafruit_crickit import crickit
+from adafruit_seesaw.neopixel import NeoPixel
 
-num_pixels = 30  # Number of pixels driven from Crickit NeoPixel terminal
+num_pixels = 60  # Number of pixels driven from Crickit NeoPixel terminal
 
-# The following line sets up a NeoPixel strip on Crickit CPX pin A1
-pixels = neopixel.NeoPixel(board.A1, num_pixels, brightness=0.3,
-                           auto_write=False)
-
+# The following line sets up a NeoPixel strip on Seesaw pin 20 for Feather
+pixels = NeoPixel(crickit.seesaw, 20, num_pixels)
 
 def color_chase(color, wait):
     for i in range(num_pixels):
@@ -22,7 +19,6 @@ def color_chase(color, wait):
         time.sleep(wait)
         pixels.show()
     time.sleep(0.5)
-
 
 def rainbow_cycle(wait):
     for j in range(255):
