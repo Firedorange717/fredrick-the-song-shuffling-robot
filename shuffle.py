@@ -1,15 +1,34 @@
-#!/usr/bin/env python3
-import gpiozero
 import time
 from adafruit_crickit import crickit
+from adafruit_motor import stepper
 
-print("1 Servo demo with custom pulse widths!")
+print("Bi-Polar or Uni-Polar Stepper motor demo!")
 
-crickit.servo_1.set_pulse_width_range(min_pulse=500, max_pulse=2300)
+# make stepper motor a variable to make code shorter to type!
+stepper_motor = crickit.stepper_motor
+# increase to slow down, decrease to speed up!
+INTERSTEP_DELAY = 0.01
 
 while True:
-	print("Moving servo #1")
-	crickit.servo_1.angle = 0      # right
-	time.sleep(1)
-	crickit.servo_1.angle = 180    # left
-	time.sleep(1)
+    print("Single step")
+    for i in range(200):
+        stepper_motor.onestep(direction=stepper.FORWARD)
+        time.sleep(INTERSTEP_DELAY)
+    for i in range(200):
+        stepper_motor.onestep(direction=stepper.BACKWARD)
+        time.sleep(INTERSTEP_DELAY)
+
+    print("Double step")
+    for i in range(200):
+        stepper_motor.onestep(direction=stepper.FORWARD, style=stepper.DOUBLE)
+        time.sleep(INTERSTEP_DELAY)
+    for i in range(200):
+        stepper_motor.onestep(direction=stepper.BACKWARD, style=stepper.DOUBLE)
+        time.sleep(INTERSTEP_DELAY)
+    print("Interleave step")
+    for i in range(200):
+        stepper_motor.onestep(direction=stepper.FORWARD, style=stepper.INTERLEAVE)
+        time.sleep(INTERSTEP_DELAY)
+    for i in range(200):
+        stepper_motor.onestep(direction=stepper.BACKWARD, style=stepper.INTERLEAVE)
+        time.sleep(INTERSTEP_DELAY)
