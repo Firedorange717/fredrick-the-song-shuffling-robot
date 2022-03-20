@@ -7,7 +7,7 @@ print("Bi-Polar or Uni-Polar Stepper motor demo!")
 # make stepper motor a variable to make code shorter to type!
 stepper_motor = crickit.stepper_motor
 # increase to slow down, decrease to speed up!
-INTERSTEP_DELAY = 0.01
+INTERSTEP_DELAY = 0
 
 while True:
     print("Single step")
