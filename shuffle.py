@@ -11,9 +11,5 @@ INTERSTEP_DELAY = 0.0001
 
 while True:
     print("Double step")
-    for i in range(400):
+    for i in range(40000):
         stepper_motor.onestep(direction=stepper.FORWARD, style=stepper.DOUBLE)
-        time.sleep(INTERSTEP_DELAY)
-    for i in range(400):
-        stepper_motor.onestep(direction=stepper.BACKWARD, style=stepper.DOUBLE)
-        time.sleep(INTERSTEP_DELAY)
