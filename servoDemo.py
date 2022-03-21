@@ -7,11 +7,14 @@ print("1 Servo demo!")
 angle = 0;
 
 while True:
-	print("Moving servo #1")
 	crickit.servo_1.angle = angle
-	time.sleep(.1)
+	time.sleep(.01)
 	angle += 1
+	print(angle)
 	
 	if angle == 180:
 		angle = 0
-		time.sleep(.1)
+		time.sleep(.01)
+		crickit.servo_1.angle = 90
+		time.sleep(3)
+		
