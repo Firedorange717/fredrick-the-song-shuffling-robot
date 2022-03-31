@@ -9,11 +9,7 @@ while True:
 		crickit.servo_1.angle = 180
 		crickit.servo_2.angle = 180
 		crickit.servo_3.angle = 180
-		time.sleep(3)
-		crickit.servo_1.angle = 90
-		crickit.servo_2.angle = 90
-		crickit.servo_3.angle = 90
-		time.sleep(3)
+		time.sleep(2)
 		crickit.servo_1.angle = 0
 		crickit.servo_2.angle = 0
 		crickit.servo_3.angle = 0
