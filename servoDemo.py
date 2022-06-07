@@ -1,17 +1,18 @@
-#!/usr/bin/env python3
-
 import time
 from adafruit_crickit import crickit
+from adafruit_motor import stepper
 
-angle = 0;
+print("Bi-Polar or Uni-Polar Stepper motor demo!")
+
+# make stepper motor a variable to make code shorter to type!
+stepper_motor = crickit.stepper_motor
+# increase to slow down, decrease to speed up!
+INTERSTEP_DELAY = 0.1
 
 while True:
-		crickit.servo_1.angle = 180
-		crickit.servo_2.angle = 180
-		crickit.servo_3.angle = 180
-		time.sleep(2)
-		crickit.servo_1.angle = 0
-		crickit.servo_2.angle = 0
-		crickit.servo_3.angle = 0
-		time.sleep(3)
-		
+    for i in range(400):
+        stepper_motor.onestep(direction=stepper.FORWARD, style=stepper.DOUBLE)
+        time.sleep(INTERSTEP_DELAY)
+    for i in range(400):
+        stepper_motor.onestep(direction=stepper.BACKWARD, style=stepper.DOUBLE)
+        time.sleep(INTERSTEP_DELAY)
